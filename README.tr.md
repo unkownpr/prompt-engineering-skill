@@ -154,22 +154,23 @@ Agent aşağıdaki anahtar kelimelerden birini yakaladığında skill devreye gi
 ```
 prompt-engineering-skill/
 ├── README.md
-└── prompt-engineering/
-    ├── SKILL.md                     # Ana skill talimatları + frontmatter
-    ├── references/
-    │   ├── agentic-loops.md         # Self-improving döngüler, ReAct, reflection
-    │   ├── anti-hallucination.md    # Halüsinasyonu önleme teknikleri
-    │   ├── cot-techniques.md        # Chain-of-Thought varyantları
-    │   ├── evaluation.md            # Prompt değerlendirme + golden dataset
-    │   ├── frameworks.md            # COSTAR, RTF, CRISPE, ICE
-    │   ├── mempalace-integration.md # Memory palace + long-context desenleri
-    │   ├── model-selection.md       # Claude / GPT / Qwen / Kimi / MiniMax karşılaştırması
-    │   ├── prompt-chaining.md       # Çok adımlı prompt zincirleme
-    │   └── rag-tips.md              # Retrieval, chunking, re-ranking
-    └── templates/
-        ├── costar-template.md       # COSTAR boilerplate
-        ├── cot-template.md          # Chain-of-Thought boilerplate
-        └── rag-template.md          # RAG system prompt boilerplate
+└── skills/
+    └── prompt-engineering/
+        ├── SKILL.md                     # Ana skill talimatları + frontmatter
+        ├── references/
+        │   ├── agentic-loops.md         # Self-improving döngüler, ReAct, reflection
+        │   ├── anti-hallucination.md    # Halüsinasyonu önleme teknikleri
+        │   ├── cot-techniques.md        # Chain-of-Thought varyantları
+        │   ├── evaluation.md            # Prompt değerlendirme + golden dataset
+        │   ├── frameworks.md            # COSTAR, RTF, CRISPE, ICE
+        │   ├── mempalace-integration.md # Memory palace + long-context desenleri
+        │   ├── model-selection.md       # Claude / GPT / Qwen / Kimi / MiniMax karşılaştırması
+        │   ├── prompt-chaining.md       # Çok adımlı prompt zincirleme
+        │   └── rag-tips.md              # Retrieval, chunking, re-ranking
+        └── templates/
+            ├── costar-template.md       # COSTAR boilerplate
+            ├── cot-template.md          # Chain-of-Thought boilerplate
+            └── rag-template.md          # RAG system prompt boilerplate
 ```
 
 ---

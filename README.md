@@ -154,22 +154,23 @@ The skill activates when the agent picks up one of these keywords:
 ```
 prompt-engineering-skill/
 ├── README.md
-└── prompt-engineering/
-    ├── SKILL.md                     # Main skill instructions + frontmatter
-    ├── references/
-    │   ├── agentic-loops.md         # Self-improving loops, ReAct, reflection
-    │   ├── anti-hallucination.md    # Hallucination prevention techniques
-    │   ├── cot-techniques.md        # Chain-of-Thought variants
-    │   ├── evaluation.md            # Prompt evaluation + golden dataset
-    │   ├── frameworks.md            # COSTAR, RTF, CRISPE, ICE
-    │   ├── mempalace-integration.md # Memory palace + long-context patterns
-    │   ├── model-selection.md       # Claude / GPT / Qwen / Kimi / MiniMax comparison
-    │   ├── prompt-chaining.md       # Multi-step prompt chaining
-    │   └── rag-tips.md              # Retrieval, chunking, re-ranking
-    └── templates/
-        ├── costar-template.md       # COSTAR boilerplate
-        ├── cot-template.md          # Chain-of-Thought boilerplate
-        └── rag-template.md          # RAG system prompt boilerplate
+└── skills/
+    └── prompt-engineering/
+        ├── SKILL.md                     # Main skill instructions + frontmatter
+        ├── references/
+        │   ├── agentic-loops.md         # Self-improving loops, ReAct, reflection
+        │   ├── anti-hallucination.md    # Hallucination prevention techniques
+        │   ├── cot-techniques.md        # Chain-of-Thought variants
+        │   ├── evaluation.md            # Prompt evaluation + golden dataset
+        │   ├── frameworks.md            # COSTAR, RTF, CRISPE, ICE
+        │   ├── mempalace-integration.md # Memory palace + long-context patterns
+        │   ├── model-selection.md       # Claude / GPT / Qwen / Kimi / MiniMax comparison
+        │   ├── prompt-chaining.md       # Multi-step prompt chaining
+        │   └── rag-tips.md              # Retrieval, chunking, re-ranking
+        └── templates/
+            ├── costar-template.md       # COSTAR boilerplate
+            ├── cot-template.md          # Chain-of-Thought boilerplate
+            └── rag-template.md          # RAG system prompt boilerplate
 ```
 
 ---
