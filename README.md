@@ -1,5 +1,7 @@
 <div align="center">
 
+<img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExbnNkbmZzYjFnYWR5N3p6Z2p4bWNlbnA1NnBxenBnZGVibWQ2OTY5biZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/e7CD41ekE5ZUSgTnkn/giphy.gif" alt="Prompt Engineering Skill" width="480" />
+
 # 🧠 Prompt Engineering Skill
 
 ### LLM'lerden tutarlı, doğru ve tekrar üretilebilir çıktılar almak için bir Agent Skill
