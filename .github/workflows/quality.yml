@@ -1,0 +1,88 @@
+name: quality
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  gitleaks:
+    name: secret scan
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Run gitleaks
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  markdownlint:
+    name: markdown lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Run markdownlint
+        uses: DavidAnson/markdownlint-cli2-action@v16
+        with:
+          globs: |
+            **/*.md
+            !node_modules
+
+  skill-frontmatter:
+    name: validate SKILL.md frontmatter
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install PyYAML
+        run: pip install pyyaml
+      - name: Validate every SKILL.md
+        run: |
+          python <<'PY'
+          import glob, re, sys
+          import yaml
+
+          paths = glob.glob("**/SKILL.md", recursive=True)
+          if not paths:
+              print("::error::no SKILL.md files found")
+              sys.exit(1)
+
+          errors = []
+          for path in paths:
+              with open(path, encoding="utf-8") as f:
+                  text = f.read()
+              match = re.match(r"^---\s*\n(.*?)\n---\s*\n", text, re.DOTALL)
+              if not match:
+                  errors.append(f"{path}: missing YAML frontmatter (--- ... ---)")
+                  continue
+              try:
+                  meta = yaml.safe_load(match.group(1)) or {}
+              except yaml.YAMLError as exc:
+                  errors.append(f"{path}: invalid YAML — {exc}")
+                  continue
+              for field in ("name", "description"):
+                  if not isinstance(meta.get(field), str) or not meta[field].strip():
+                      errors.append(f"{path}: frontmatter missing or empty '{field}'")
+              name = meta.get("name", "")
+              if name and not re.fullmatch(r"[a-z0-9][a-z0-9-]*", name):
+                  errors.append(f"{path}: name '{name}' must be lowercase with hyphens only")
+              print(f"OK  {path}  name={meta.get('name')}")
+
+          if errors:
+              for e in errors:
+                  print(f"::error::{e}")
+              sys.exit(1)
+          PY
